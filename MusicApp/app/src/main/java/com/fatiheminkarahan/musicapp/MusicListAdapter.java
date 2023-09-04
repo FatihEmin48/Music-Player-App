@@ -31,7 +31,7 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
     }
 
     @Override
-    public void onBindViewHolder( MusicListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder( MusicListAdapter.ViewHolder holder,int position) {
         AudioModel songData = songsList.get(position);
         holder.titleTextView.setText(songData.getTitle());
 
@@ -48,10 +48,13 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
 
                 MyMediaPlayer.getInstance().reset();
                 MyMediaPlayer.currentIndex = position;
+
                 Intent intent = new Intent(context, MusicPlayerActivity.class);
                 intent.putExtra("LIST",songsList);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
+
+
 
             }
         });
